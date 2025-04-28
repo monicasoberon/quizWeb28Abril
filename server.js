@@ -1,18 +1,13 @@
 const express = require('express');
-const authRoutes = require('./src/routes/auth');
-const errorHandler = require('./src/middleware/error');
-
 const app = express();
+const apiRoutes = require('./src/app/api/auth/route');
+const errorHandler = require('./src/app/backend/middleware/error');
 
-// Hacer que Express entienda JSON antes de las rutas
 app.use(express.json());
-
-// Servir archivos estáticos como index.html
 app.use(express.static('public'));
 
-app.use('/api/auth', authRoutes);
+app.use('/api', apiRoutes);
 
-// Manejo de errores
 app.use(errorHandler);
 
 const PORT = 3000;
