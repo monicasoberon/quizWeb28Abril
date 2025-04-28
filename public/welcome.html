@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Bienvenido - NovaLearn</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-green-100 flex justify-center items-center min-h-screen">
+
+    <div class="bg-white p-8 rounded shadow-md text-center w-80">
+        <h1 id="mensaje" class="text-xl font-bold mb-4"></h1>
+        <h2 id="libro" class="text-md text-gray-700"></h2>
+    </div>
+
+    <script>
+        const mensaje = localStorage.getItem('mensaje');
+        const libroFavorito = localStorage.getItem('libroFavorito');
+
+        if (mensaje && libroFavorito) {
+            document.getElementById('mensaje').textContent = mensaje;
+            document.getElementById('libro').textContent = `Tu libro favorito es: ${libroFavorito}`;
+        } else {
+            document.getElementById('mensaje').textContent = 'No hay sesión activa.';
+            document.getElementById('libro').textContent = '';
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+{
+  "name": "quizweb28abril-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/monicasoberon/quizWeb28Abril.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/monicasoberon/quizWeb28Abril/issues"
+  },
+  "homepage": "https://github.com/monicasoberon/quizWeb28Abril#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}

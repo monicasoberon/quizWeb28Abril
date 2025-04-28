@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>NovaLearn - Inicio de Sesión</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex justify-center items-center min-h-screen">
+
+    <div class="bg-white p-8 rounded shadow-md w-80">
+        <h1 class="text-xl font-bold text-center mb-6">Biblioteca NovaLearn</h1>
+
+        <form id="loginForm" class="flex flex-col space-y-4">
+            <input type="text" id="username" placeholder="Usuario" required class="border rounded p-2">
+            <input type="password" id="password" placeholder="Contraseña" required class="border rounded p-2">
+            <button type="submit" class="bg-blue-500 text-white p-2 rounded hover:bg-blue-600">Iniciar Sesión</button>
+        </form>
+
+        <p id="error" class="text-red-500 text-center mt-4"></p>
+    </div>
+
+    <script>
+        const form = document.getElementById('loginForm');
+        const errorElement = document.getElementById('error');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                const res = await fetch('/api/auth/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, password })
+                });
+
+                const data = await res.json();
+
+                if (res.ok) {
+                    localStorage.setItem('mensaje', data.message);
+                    localStorage.setItem('libroFavorito', data.libroFavorito);
+                    window.location.href = '/welcome.html';
+                } else {
+                    errorElement.textContent = data.error;
+                }
+            } catch (error) {
+                errorElement.textContent = 'Error de conexión al servidor.';
+            }
+        });
+    </script>
+
+</body>
+</html>
