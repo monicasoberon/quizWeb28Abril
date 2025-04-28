@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
-const StudentService = require('../services/studentService');
-const AuthHandler = require('../handlers/authHandlers');
-const AuthController = require('../controllers/authController');
+const StudentService = require('../services/StudentService');
+const AuthHandler = require('../handlers/AuthHandlers');
+const AuthController = require('../controllers/AuthController');
 
 const studentService = new StudentService();
 const authController = new AuthController(studentService);

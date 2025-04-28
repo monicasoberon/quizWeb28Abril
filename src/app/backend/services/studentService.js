@@ -1,4 +1,4 @@
-const students = require('../db/students');
+const students = require('../db/Students');
 
 class StudentService {
     constructor() {
